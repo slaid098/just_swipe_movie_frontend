@@ -1,101 +1,112 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import TinderCard from 'react-tinder-card';
+import SwipeCard from '../components/SwipeCard';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [movies, setMovies] = useState([
+    {
+      id: 1,
+      title: 'Интерстеллар',
+      englishTitle: 'Interstellar',
+      releaseYear: 2014,
+      image: 'https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg',
+      imdbRating: 8.6,
+      kinopoiskRating: 8.7,
+      genres: ['Научная фантастика', 'Приключения', 'Драма'],
+      description: 'Фильм о путешествии через червоточину в поисках нового дома для человечества.'
+    },
+    {
+      id: 2,
+      title: 'Начало',
+      englishTitle: 'Inception',
+      releaseYear: 2010,
+      image: 'https://m.media-amazon.com/images/M/MV5BMjExMjkwNTQ0Nl5BMl5BanBnXkFtZTcwNTY0OTk1Mw@@._V1_SX400_CR0',
+      imdbRating: 8.8,
+      kinopoiskRating: 8.7,
+      genres: ['Экшн', 'Научная фантастика', 'Триллер'],
+      description: 'Фильм о воровстве идей через проникновение в сны.'
+    },
+    {
+      id: 3,
+      title: 'Матрица',
+      englishTitle: 'The Matrix',
+      releaseYear: 1999,
+      image: 'https://i.pinimg.com/736x/8a/71/6b/8a716b0f184fd6f2d2d944ed57bae85b.jpg',
+      imdbRating: 8.7,
+      kinopoiskRating: 8.5,
+      genres: ['Экшн', 'Научная фантастика'],
+      description: 'Фильм о виртуальной реальности и борьбе за свободу.'
+    },
+    {
+      id: 4,
+      title: 'Назад в будущее',
+      englishTitle: 'Back to the Future',
+      releaseYear: 1985,
+      image: 'https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/2e6ca490-7471-4f59-8fed-c5e151777f06/1920x',
+      imdbRating: 8.5,
+      kinopoiskRating: 8.6,
+      genres: ['Приключения', 'Комедия', 'Научная фантастика'],
+      description: 'Фильм о путешествиях во времени и изменении истории.'
+    },
+    {
+      id: 5,
+      title: 'Бойцовский клуб',
+      englishTitle: 'Fight Club',
+      releaseYear: 1999,
+      image: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/ff34cf01-808c-44b4-a42a-67fdd7924170/1920x',
+      imdbRating: 8.8,
+      kinopoiskRating: 8.7,
+      genres: ['Драма'],
+      description: 'Фильм о внутренней борьбе и создании подпольного бойцовского клуба.'
+    },
+    {
+      id: 6,
+      title: 'Как трусливый Роберт Форд убил Джесси Джеймса',
+      englishTitle: 'The Assassination of Jesse James by the Coward Robert Ford',
+      releaseYear: 2023,
+      image: 'http://lh3.ggpht.com/_A5UhXkMtaBA/TSngzagww2I/AAAAAAAAADA/KfNYLnMqtIE/s800/586877%20-%20Olivia_Wilde%20Tron%20fakes%20quorra%20tron_legacy.jpg',
+      imdbRating: 9.0,
+      kinopoiskRating: 9.1,
+      genres: ['Драма', 'Комедия', 'Триллер', 'Фантастика', 'Приключения', 'Мистика', 'Боевик', 'Фэнтези', 'Исторический', 'Биография'],
+      description: 'Фильм о жизни и смерти известного преступника Джесси Джеймса.'
+    }
+  ]);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const handleSwipe = (direction: string, movieId: number) => {
+    console.log(`Свайп ${direction} для фильма с id: ${movieId}`);
+    setMovies((prevMovies) => prevMovies.filter(movie => movie.id !== movieId));
+  };
+
+  const handleCardLeftScreen = (movieId: number) => {
+    console.log(`Карточка с id: ${movieId} покинула экран`);
+    // Здесь можно добавить дополнительную логику, если необходимо
+  };
+
+  return (
+    <div className="flex flex-col items-center min-h-screen p-8">
+      <div className="w-80 h-[500px] relative">
+        {movies.map((movie) => (
+          <TinderCard
+            key={movie.id}
+            onSwipe={(dir) => handleSwipe(dir, movie.id)}
+            onCardLeftScreen={() => handleCardLeftScreen(movie.id)}
+            preventSwipe={['up', 'down']}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <SwipeCard 
+              title={movie.title} 
+              englishTitle={movie.englishTitle} 
+              releaseYear={movie.releaseYear} 
+              image={movie.image} 
+              imdbRating={movie.imdbRating} 
+              kinopoiskRating={movie.kinopoiskRating} 
+              genres={movie.genres}
+              description={movie.description}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          </TinderCard>
+        ))}
+      </div>
     </div>
   );
 }
