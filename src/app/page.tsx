@@ -15,7 +15,8 @@ export default function Home() {
       imdbRating: 8.6,
       kinopoiskRating: 8.7,
       genres: ['Научная фантастика', 'Приключения', 'Драма'],
-      description: 'Фильм о путешествии через червоточину в поисках нового дома для человечества.'
+      description: 'Фильм о путешествии через червоточину в поисках нового дома для человечества.',
+      trailerUrl: 'https://www.youtube.com/watch?v=YihPA42fdQ8'
     },
     {
       id: 2,
@@ -26,7 +27,8 @@ export default function Home() {
       imdbRating: 8.8,
       kinopoiskRating: 8.7,
       genres: ['Экшн', 'Научная фантастика', 'Триллер'],
-      description: 'Фильм о воровстве идей через проникновение в сны.'
+      description: 'Фильм о воровстве идей через проникновение в сны.',
+      trailerUrl: 'https://www.youtube.com/watch?v=YihPA42fdQ8'
     },
     {
       id: 3,
@@ -37,7 +39,8 @@ export default function Home() {
       imdbRating: 8.7,
       kinopoiskRating: 8.5,
       genres: ['Экшн', 'Научная фантастика'],
-      description: 'Фильм о виртуальной реальности и борьбе за свободу.'
+      description: 'Фильм о виртуальной реальности и борьбе за свободу.',
+      trailerUrl: 'https://www.youtube.com/watch?v=YihPA42fdQ8'
     },
     {
       id: 4,
@@ -48,7 +51,8 @@ export default function Home() {
       imdbRating: 8.5,
       kinopoiskRating: 8.6,
       genres: ['Приключения', 'Комедия', 'Научная фантастика'],
-      description: 'Фильм о путешествиях во времени и изменении истории.'
+      description: 'Фильм о путешествиях во времени и изменении истории.',
+      trailerUrl: 'https://www.youtube.com/watch?v=YihPA42fdQ8'
     },
     {
       id: 5,
@@ -59,7 +63,8 @@ export default function Home() {
       imdbRating: 8.8,
       kinopoiskRating: 8.7,
       genres: ['Драма'],
-      description: 'Фильм о внутренней борьбе и создании подпольного бойцовского клуба.'
+      description: 'Фильм о внутренней борьбе и создании подпольного бойцовского клуба.',
+      trailerUrl: 'https://www.youtube.com/watch?v=YihPA42fdQ8'
     },
     {
       id: 6,
@@ -70,7 +75,8 @@ export default function Home() {
       imdbRating: 9.0,
       kinopoiskRating: 9.1,
       genres: ['Драма', 'Комедия', 'Триллер', 'Фантастика', 'Приключения', 'Мистика', 'Боевик', 'Фэнтези', 'Исторический', 'Биография'],
-      description: 'Фильм о жизни и смерти известного преступника Джесси Джеймса.'
+      description: 'Фильм о жизни и смерти известного преступника Джесси Джеймса.',
+      trailerUrl: 'https://www.youtube.com/watch?v=YihPA42fdQ8'
     }
   ]);
 
@@ -94,15 +100,17 @@ export default function Home() {
             onCardLeftScreen={() => handleCardLeftScreen(movie.id)}
             preventSwipe={['up', 'down']}
           >
-            <SwipeCard 
-              title={movie.title} 
-              englishTitle={movie.englishTitle} 
-              releaseYear={movie.releaseYear} 
-              image={movie.image} 
-              imdbRating={movie.imdbRating} 
-              kinopoiskRating={movie.kinopoiskRating} 
+            <SwipeCard
+              title={movie.title}
+              englishTitle={movie.englishTitle}
+              releaseYear={movie.releaseYear}
+              image={movie.image}
+              imdbRating={movie.imdbRating}
+              kinopoiskRating={movie.kinopoiskRating}
               genres={movie.genres}
               description={movie.description}
+              trailerUrl={movie.trailerUrl}
+              onSwipe={(direction) => handleSwipe(direction, movie.id)}
             />
           </TinderCard>
         ))}
