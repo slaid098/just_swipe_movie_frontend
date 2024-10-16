@@ -76,7 +76,7 @@ export default function Home() {
       title: 'Как трусливый Роберт Форд убил Джесси Джеймса',
       englishTitle: 'The Assassination of Jesse James by the Coward Robert Ford',
       releaseYear: 2023,
-      image: 'http://lh3.ggpht.com/_A5UhXkMtaBA/TSngzagww2I/AAAAAAAAADA/KfNYLnMqtIE/s800/586877%20-%20Olivia_Wilde%20Tron%20fakes%20quorra%20tron_legacy.jpg',
+      image: 'https://avatars.mds.yandex.net/get-mpic/1927422/2a0000018e1d13cb3ad60d2ab419f88bc416/orig',
       imdbRating: 9.0,
       kinopoiskRating: 9.1,
       genres: ['Драма', 'Комедия', 'Триллер', 'Фантастика', 'Приключения', 'Мистика', 'Боевик', 'Фэнтези', 'Исторический', 'Биография'],
